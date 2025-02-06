@@ -1,0 +1,30 @@
+.action-buttonT {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0 5px;
+    padding: 5px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .action-button:hover {
+    transform: scale(1.2);
+  }
+  
+  .edit-button {
+    color: #007bff;
+  }
+  
+  .edit-button:hover {
+    color: #0056b3;
+  }
+  
+  .delete-button {
+    color: #dc3545;
+  }
+  
+  .delete-button:hover {
+    color: #a71d2a;
+  }
+  

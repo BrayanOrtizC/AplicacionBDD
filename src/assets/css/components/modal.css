@@ -1,0 +1,88 @@
+/* Fondo oscuro al abrir el modal */
+.cliente-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  /* Contenedor de la ventana modal */
+  .cliente-modal {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 40%;
+    max-width: 500px;
+    z-index: 1001;
+  }
+  
+  /* Campos de entrada del formulario */
+  .cliente-modal input {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  /* Botones dentro del modal */
+  .cliente-modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+  }
+  
+  .cliente-modal-buttons button {
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: 0.3s;
+  }
+  
+  .cliente-modal-save {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .cliente-modal-save:hover {
+    background-color: #218838;
+  }
+  
+  .cliente-modal-cancel {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .cliente-modal-cancel:hover {
+    background-color: #c82333;
+  }
+  .cliente-modal-add {
+    background: linear-gradient(135deg, #6e5223, #0e4541);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  }
+  
+  .cliente-modal-add:hover {
+    background: linear-gradient(135deg,  #0e4541,#6e5223);
+  transform: scale(1.05);
+  }
+  

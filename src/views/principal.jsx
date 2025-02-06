@@ -1,52 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import "../components/button/button.css";
-import "../components/combobox/combobox.css";
-import "../components/fondo/fondo.css";
+import "../assets/css/views/fondo.css"
+import "../assets/css/components/botones-principal.css"
+import { FaUsers, FaUserTie, FaFileInvoiceDollar } from 'react-icons/fa';
 
 const ActionsView = () => {
-  const [selection, setSelection] = useState('');
   const navigate = useNavigate();
 
-  const handleSelectionChange = (event) => {
-    setSelection(event.target.value);
-  };
-
-  const handleButtonClick = (action) => {
-    if (selection) {
-      if (action === 'agregar') {
-        navigate(`/${selection}/agregar`);
-      } else if (action === 'editar') {
-        navigate(`/${selection}/editar`);
-      } else if (action === 'eliminar') {
-        navigate(`/${selection}/eliminar`);
-      }
-    } else if (action === 'pagos') {
-      navigate('/pagos');
-    } else {
-      alert('Por favor, seleccione una opción en el combobox');
-    }
+  const handleButtonClick = (section) => {
+    navigate(`/${section}`);
   };
 
   return (
-    <div className="actions-container">
-      <h2 className="actions-title">Seleccione una opción y luego elija una acción</h2>
+    <div className="actions-botonP">
+      <h2 className="actions-title">Seleccione una opción</h2>
 
-      <div className="select-container">
-        <select value={selection} onChange={handleSelectionChange}>
-          <option value="">Seleccione...</option>
-          <option value="cliente">Cliente</option>
-          <option value="proveedor">Proveedor</option>
-          <option value="empleado">Empleado</option>
-          <option value="producto">Producto</option>
-        </select>
-      </div>
-
-      <div className="buttons-container">
-        <button onClick={() => handleButtonClick('agregar')}>Agregar</button>
-        <button onClick={() => handleButtonClick('editar')}>Editar</button>
-        <button onClick={() => handleButtonClick('eliminar')}>Eliminar</button>
-        <button onClick={() => handleButtonClick('pagos')}>Pagos</button>
+      <div className="buttons-botonP">
+        <button className="action-button" onClick={() => handleButtonClick('cliente')}>
+          <FaUsers className="button-icon" />
+          Clientes
+        </button>
+        <button className="action-button" onClick={() => handleButtonClick('empleados')}>
+          <FaUserTie className="button-icon" />
+          Empleados
+        </button>
+        <button className="action-button" onClick={() => handleButtonClick('facturacion')}>
+          <FaFileInvoiceDollar className="button-icon" />
+          Facturación
+        </button>
       </div>
     </div>
   );

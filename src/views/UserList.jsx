@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchUsers } from '../services/userService';
-import '../components/table/Table.css'; // Importar el CSS
+import "../assets/css/components/Table.css"
+
 
 const SalesTable = () => {
   const [sales, setSales] = useState([]);
