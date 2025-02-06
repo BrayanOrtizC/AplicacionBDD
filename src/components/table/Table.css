@@ -1,0 +1,70 @@
+/* Contenedor de la tabla */
+.sales-table-container {
+    width: 80%; /* Aumenta el ancho del contenedor para mayor amplitud */
+    max-width: 1200px; /* Define un ancho máximo */
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9; /* Fondo suave para el contenedor */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+  /* Estilos de la tabla */
+  .sales-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden; /* Asegura que los bordes redondeados se mantengan */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
+  }
+  
+  /* Estilos para las celdas de la tabla */
+  .sales-table th, 
+  .sales-table td {
+    padding: 15px 20px; /* Espaciado más amplio */
+    border: 1px solid #e0e0e0; /* Borde más claro */
+    text-align: center;
+    font-size: 16px; /* Tamaño de texto más manejable */
+    font-family: 'Roboto', sans-serif; /* Tipografía moderna */
+    color: #333; /* Color de texto gris oscuro */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Animación para interactividad */
+  }
+  
+  /* Estilos para los encabezados de la tabla */
+  .sales-table th {
+    background-color: #007bff; /* Azul vibrante */
+    color: white;
+    font-size: 18px; /* Un poco más grande para los encabezados */
+    font-weight: 600; /* Peso de fuente más fuerte */
+    text-transform: uppercase; /* Mayúsculas para los encabezados */
+  }
+  
+  /* Estilo para las filas pares */
+  .sales-table tr:nth-child(even) {
+    background-color: #f8f8f8; /* Fondo sutil para las filas pares */
+  }
+  
+  /* Efecto hover sobre las filas */
+  .sales-table tr:hover {
+    background-color: #e1f5fe; /* Fondo suave cuando se pasa el ratón */
+    transform: translateY(-2px); /* Eleva ligeramente la fila al pasar el ratón */
+  }
+  
+  /* Estilo para la última columna */
+  .sales-table td:last-child {
+    font-weight: 700; /* Negrita para la última columna */
+    color: #f39c12; /* Color dorado */
+  }
+  
+  /* Título llamativo */
+  .sales-title {
+    text-align: center;
+    font-size: 32px; /* Título más grande */
+    color: #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1.5px; /* Espaciado entre letras */
+  }
+  

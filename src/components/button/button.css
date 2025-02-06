@@ -1,0 +1,29 @@
+/* Estilos para los botones */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;                   /* Espacio entre los botones */
+    flex-wrap: wrap;              /* Para que los botones se ajusten a la pantalla */
+    margin-top: 20px;             /* Espaciado superior */
+  }
+  
+  button {
+    padding: 12px 20px;          /* Tamaño del padding (espaciado interno) */
+    font-size: 16px;             /* Tamaño de la fuente */
+    border: none;                /* Sin borde */
+    border-radius: 5px;          /* Bordes redondeados */
+    background-color: #007bff;   /* Fondo azul */
+    color: white;                /* Texto blanco */
+    cursor: pointer;             /* Puntero de mano */
+    transition: background-color 0.3s ease; /* Transición suave para el fondo */
+  }
+  
+  button:hover {
+    background-color: #0056b3;   /* Fondo azul más oscuro al pasar el mouse */
+  }
+  
+  button:disabled {
+    background-color: #ccc;      /* Fondo gris cuando está deshabilitado */
+    cursor: not-allowed;         /* Cambia el cursor a no permitido */
+  }
+  

@@ -1,0 +1,22 @@
+/* Estilos para el Combobox */
+.select-container {
+    margin-bottom: 30px; /* Espaciado debajo del combobox */
+    text-align: center;  /* Centrar el combobox */
+  }
+  
+  select {
+    padding: 10px 15px;          /* Espaciado interno del combobox */
+    font-size: 16px;             /* Tamaño de la fuente */
+    border: 1px solid #007bff;   /* Borde azul */
+    border-radius: 4px;          /* Bordes redondeados */
+    background-color: white;     /* Fondo blanco */
+    width: 200px;                /* Ancho del combobox */
+    cursor: pointer;             /* Aparece el puntero cuando se pasa sobre él */
+    transition: border-color 0.3s; /* Transición suave para el borde */
+  }
+  
+  select:focus {
+    outline: none;               /* Quitar el contorno predeterminado */
+    border-color: #0056b3;       /* Borde azul más oscuro al enfocarse */
+  }
+  
