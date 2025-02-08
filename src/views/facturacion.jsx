@@ -13,13 +13,14 @@ const Facturacion = () => {
     const [isCancelled, setIsCancelled] = useState(false);
 
     const [nuevaFactura, setNuevaFactura] = useState({
-        id_factura: "F203",
+        id_factura: "F210",
         cc_cliente: "",
         id_empleado: "",
         id_tienda: "",
         fecha: new Date().toISOString().split("T")[0],
         precio_total: "0.0",
-        items: []
+        items: [],
+        num_linea: 1, // Inicializar con 1
     });
 
     const [nuevoItem, setNuevoItem] = useState({
@@ -30,7 +31,7 @@ const Facturacion = () => {
         cantidad: 1,
         importe:"",
         id_tienda: "",
-        num_linea: ""
+        num_linea: 1, // Inicializar con 1
     });
 
     useEffect(() => {
@@ -84,9 +85,32 @@ const Facturacion = () => {
             alert(`Stock insuficiente. Disponible: ${productoSeleccionado.stock}`);
             return;
         }
+
+        // Asignar num_linea a nuevo item
+        const itemConNumeroLinea = {
+            ...nuevoItem,
+            num_linea: nuevaFactura.num_linea, // Asignar el número de línea actual
+        };
     
-        setNuevaFactura({ ...nuevaFactura, items: [...nuevaFactura.items, nuevoItem] });
-        setNuevoItem({ id_producto: "", descripcion: "", precio: "", cantidad: "" });
+        /*setNuevaFactura({ ...nuevaFactura, items: [...nuevaFactura.items, nuevoItem] });
+        setNuevoItem({ id_producto: "", descripcion: "", precio: "", cantidad: "" });*/
+
+        setNuevaFactura({
+            ...nuevaFactura,
+            items: [...nuevaFactura.items, itemConNumeroLinea],
+            num_linea: nuevaFactura.num_linea + 1, // Incrementar el contador
+        });
+
+        // Resetear los campos del item
+        setNuevoItem({
+            id_producto: "",
+            descripcion: "",
+            precio: 0,
+            cantidad: 1,
+            importe: "",
+            id_tienda: "",
+            num_linea: nuevaFactura.num_linea + 1, // Actualizar para el próximo item
+        });
 
     };
 
@@ -97,7 +121,8 @@ const Facturacion = () => {
             id_empleado: "",
             id_tienda: "",
             fecha: new Date().toISOString().split("T")[0],
-            items: []
+            items: [],
+            num_linea: 1, // Reiniciar el contador de num_linea
         });
         alert("Factura cancelada. No se guardará en la base de datos.");
     };
@@ -114,15 +139,16 @@ const Facturacion = () => {
                 precio: productoSeleccionado.precio_producto || 0,
                 cantidad: nuevoItem.cantidad || 1,
                 importe:"101010",
-                id_tienda: "001",
-                num_linea: "100"
+                id_tienda: productoSeleccionado.id_tienda,
+                num_linea: nuevaFactura.num_linea, // Asignar el num_linea actual
             });
         } else {
             setNuevoItem({
                 id_producto: "",
                 descripcion: "",
                 precio: 0,
-                cantidad: 1
+                cantidad: 1,
+                num_linea: nuevaFactura.num_linea,
             });
         }
     };
@@ -142,7 +168,7 @@ const Facturacion = () => {
                     ))}
                 </select>
                 <label>Empleado:</label>
-                <select onChange={(f) => setNuevaFactura({ ...nuevaFactura, id_empleado: f.target.value })}>
+                <select onChange={(f) => setNuevaFactura({ ...nuevaFactura, id_empleado: f.target.value, id_tienda: empleados.find(emp => emp.id_empleado === f.target.value).id_tienda})}>
                     <option value="">Seleccione un Empleado</option>
                     {empleados.map(empleado => (
                         <option key={empleado.id_empleado} value={empleado.id_empleado}>{empleado.id_empleado}</option>
@@ -180,6 +206,7 @@ const Facturacion = () => {
             <table className="sales-table">
                 <thead>
                     <tr>
+                        <th>Número de Línea</th> {/* Agregar columna para num_linea */}
                         <th>ID Producto</th>
                         <th>Descripción</th>
                         <th>Precio</th>
@@ -189,6 +216,7 @@ const Facturacion = () => {
                 <tbody>
                     {nuevaFactura.items.map((item, index) => (
                         <tr key={index}>
+                            <td>{item.num_linea}</td> {/* Mostrar el num_linea */}
                             <td>{item.id_producto}</td>
                             <td>{item.descripcion}</td>
                             <td>{item.precio}</td>
