@@ -7,6 +7,8 @@ import ActionsView from './views/principal';
 import ProveedorList from './views/ProveedorList';
 import EmpleadoList from './views/EmpleadoList';
 import Facturacion from './views/facturacion';
+import FacturaPage from './views/fdsf';
+
 
 
 
@@ -23,6 +25,7 @@ const Intermediate = () => {
           <Route path="/proveedores" element={<ProveedorList />} />
           <Route path="/empleados" element={<EmpleadoList />} />
           <Route path="/facturacion" element={<Facturacion />} />
+          <Route path="/f" element={<FacturaPage />} />
         </Routes>
 
       </div>
