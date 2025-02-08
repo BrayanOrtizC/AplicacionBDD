@@ -68,3 +68,71 @@
     letter-spacing: 1.5px; /* Espaciado entre letras */
   }
   
+  .custom-select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #f8f8f8;
+    cursor: pointer;
+  }
+  
+  .custom-select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  .custom-label {
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 0px;
+    color: #333;
+    margin-right: "4px";
+  }
+  
+
+  .form-container {
+    display: flex;
+    flex-wrap: wrap;  /* Permite que los elementos pasen a la siguiente línea si no caben */
+    align-items: center; /* Alinea verticalmente */
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  gap: 5px; /* Reduce el espacio entre elementos */
+  margin-left: 4px;
+  }
+  .form-container label {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  .form-container input, .form-container select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+  .form-container button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .form-container button:hover {
+    background-color: #0056b3;
+  }
+  .form-container input,
+.form-container select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  width: 200px; /* Ajusta el ancho si es necesario */
+
+}
+  
+  
+  
