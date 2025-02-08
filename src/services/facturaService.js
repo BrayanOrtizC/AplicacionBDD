@@ -34,16 +34,16 @@ export const fetchClienteById = async (cc_cliente) => {
     }
 };
 
-export const fetchUltimaFactura = async () => {
-    try {
-        const response = await fetch("http://localhost:5000/api/v_factura/ultima"); // Asegúrate de que la API devuelva solo la última factura
-        if (!response.ok) {
-            throw new Error("Error al obtener la última factura");
-        }
-        const ultimaFactura = await response.json();
-        return ultimaFactura;
-    } catch (error) {
-        console.error("Error al obtener la última factura:", error);
-        return null;
-    }
-};
+// export const fetchUltimaFactura = async () => {
+//     try {
+//         const response = await fetch("http://localhost:5000/api/v_factura/ultima"); // Asegúrate de que la API devuelva solo la última factura
+//         if (!response.ok) {
+//             throw new Error("Error al obtener la última factura");
+//         }
+//         const ultimaFactura = await response.json();
+//         return ultimaFactura;
+//     } catch (error) {
+//         console.error("Error al obtener la última factura:", error);
+//         return null;
+//     }
+// };

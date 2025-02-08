@@ -153,3 +153,144 @@ button:active::after {
   background-color: #001f3e;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+/* General container for the invoice page */
+.invoice-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title of the page */
+.invoice-title {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Invoice input and label sections */
+.invoice-details {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  margin-right: 10px;
+  width: 120px;
+}
+
+.invoice-input,
+.invoice-select {
+  width: 100%;
+  padding: 20px;
+  font-size: 2em;
+  border-radius: 6px;
+  border: 3px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.invoice-input:focus,
+.invoice-select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Buttons */
+.action-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.action-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.action-button:hover {
+  background-color: #0056b3;
+}
+
+.cancel {
+  background-color: #dc3545;
+}
+
+.cancel:hover {
+  background-color: #c82333;
+}
+
+/* Table Styles */
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.invoice-table th,
+.invoice-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.invoice-table th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.invoice-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Subtitle for sections */
+.sales-subtitle {
+  font-size: 1.5em;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Final total section */
+h2 {
+  text-align: right;
+  font-size: 2.5em;
+  margin-top: 20px;
+  color: #333;
+}
+
+
+

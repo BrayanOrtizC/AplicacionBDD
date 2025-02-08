@@ -73,7 +73,7 @@ const Facturacion = () => {
                 setProductos(await fetchProductos());
 
                 // Obtener la última factura y calcular el nuevo ID
-                await obtenerNuevoIdFactura();
+                // await obtenerNuevoIdFactura();
 
             } catch (error) {
                 console.error(error);
@@ -209,173 +209,136 @@ const Facturacion = () => {
 
     return (
         <div className="sales-table-container">
-            <h1 className="sales-title">Generar Factura</h1>
-            {/* <h2>Factura #{nuevaFactura.id_factura}</h2> */}
-
-            <h2>Factura  <input 
-                type="text" 
-                value={nuevaFactura.id_factura} 
-                onChange={(e) => setNuevaFactura({ ...nuevaFactura, id_factura: e.target.value })}
-                placeholder="Ingrese ID de factura"
-            /> </h2>
-
-
-            {/* <h3>Fecha: {nuevaFactura.fecha}</h3> */}
-
-            <div className="form-container">
-                <label>Cliente:</label>
-                <select onChange={(e) => setNuevaFactura({ ...nuevaFactura, cc_cliente: e.target.value })}>
-                    console.log(e.target.value)
-                    <option value="">Seleccione un Cliente</option>
-                    {clientes.map(cliente => (
-                        <option key={cliente.cc_cliente} value={cliente.cc_cliente}>{cliente.cc_cliente}</option>
-                    ))}
-                </select>
-                <label>Empleado:</label>
-                <select onChange={(f) => setNuevaFactura({ ...nuevaFactura, id_empleado: f.target.value, id_tienda: empleados.find(emp => emp.id_empleado === f.target.value).id_tienda})}>
-                    <option value="">Seleccione un Empleado</option>
-                    {empleados.map(empleado => (
-                        <option key={empleado.id_empleado} value={empleado.id_empleado}>{empleado.id_empleado}</option>
-                    ))}
-                </select>
-                {/* <label>ID Tienda:</label> */}
-                {/* <input type="text" onChange={(e) => setNuevaFactura({ ...nuevaFactura, id_tienda: e.target.value })} /> */}
-                {/* <input type="text" value={nuevaFactura.id_tienda} onChange={(e) => setNuevaFactura({ ...nuevaFactura, id_tienda: e.target.value })} /> */}
-                <label>Fecha:</label>
-                <input type="date" value={nuevaFactura.fecha} onChange={(e) => setNuevaFactura({ ...nuevaFactura, fecha: e.target.value })} />
+          <h1 className="sales-title">Generar Factura</h1>
+      
+          <h2>Factura  
+            <input 
+              type="text" 
+              value={nuevaFactura.id_factura} 
+              onChange={(e) => setNuevaFactura({ ...nuevaFactura, id_factura: e.target.value })}
+              placeholder="Ingrese ID de factura"
+            />
+          </h2>
+      
+          <div className="form-container">
+            <label>Cliente:</label>
+            <select 
+              onChange={(e) => setNuevaFactura({ ...nuevaFactura, cc_cliente: e.target.value })}
+            >
+              <option value="">Seleccione un Cliente</option>
+              {clientes.map(cliente => (
+                <option key={cliente.cc_cliente} value={cliente.cc_cliente}>{cliente.cc_cliente}</option>
+              ))}
+            </select>
+      
+            <label>Empleado:</label>
+            <select 
+              onChange={(f) => setNuevaFactura({ 
+                ...nuevaFactura, 
+                id_empleado: f.target.value, 
+                id_tienda: empleados.find(emp => emp.id_empleado === f.target.value).id_tienda 
+              })}
+            >
+              <option value="">Seleccione un Empleado</option>
+              {empleados.map(empleado => (
+                <option key={empleado.id_empleado} value={empleado.id_empleado}>{empleado.id_empleado}</option>
+              ))}
+            </select>
+      
+            <label>Fecha:</label>
+            <input 
+              type="date" 
+              value={nuevaFactura.fecha} 
+              onChange={(e) => setNuevaFactura({ ...nuevaFactura, fecha: e.target.value })}
+            />
+          </div>
+      
+          <h2 className="sales-subtitle">Agregar Producto</h2>
+          <div className="form-container">
+            <label>ID Producto:</label>
+            <select 
+              value={nuevoItem.id_producto} 
+              onChange={handleProductoChange}
+            >
+              <option value="">Seleccione un Producto</option>
+              {productos.map(producto => (
+                <option key={producto.id_producto} value={producto.id_producto}>{producto.id_producto}</option>
+              ))}
+            </select>
+      
+            <label>Descripción:</label>
+            <input 
+              type="text" 
+              value={nuevoItem.descripcion} 
+              disabled 
+            />
+      
+            <label>Precio:</label>
+            <input 
+              type="text" 
+              value={nuevoItem.precio} 
+              disabled 
+            />
+      
+            <label>Cantidad:</label>
+            <input
+              type="number"
+              value={nuevoItem.cantidad}
+              onChange={(e) => {
+                const cantidad = parseInt(e.target.value) || 1;
+                setNuevoItem(prev => ({
+                  ...prev,
+                  cantidad,
+                  importe: prev.precio * cantidad,
+                }));
+              }}
+            />
+            <div className="cliente-modal-buttons">
+              <button className="cliente-modal-save" onClick={handleAgregarItem}>
+                Agregar Item
+              </button>
             </div>
-
-            <h2 className="sales-subtitle">Agregar Producto</h2>
-            <div className="form-container">
-                <label>ID Producto:</label>
-                <select value={nuevoItem.id_producto} onChange={handleProductoChange}>
-                    <option value="">Seleccione un Producto</option>
-                    {productos.map(producto => (
-                        <option key={producto.id_producto} value={producto.id_producto}>{producto.id_producto}</option>
-                    ))}
-                </select>
-                <label>Descripción:</label>
-                <input type="text" value={nuevoItem.descripcion} disabled />
-                <label>Precio:</label>
-                <input type="text" value={nuevoItem.precio} disabled />
-                <label>Cantidad:</label>
-                <input
-                    type="number"
-                    value={nuevoItem.cantidad}
-                    // onChange={(e) => setNuevoItem({ ...nuevoItem, cantidad: parseInt(e.target.value) || 1 })}
-                    onChange={(e) => {
-                        const cantidad = parseInt(e.target.value) || 1;
-                        setNuevoItem(prev => ({
-                            ...prev,
-                            cantidad,
-                            importe: prev.precio * cantidad,
-                        }));
-                    }}
-                />
-                <button className="action-buttonT" onClick={handleAgregarItem}>Agregar Item</button>
-            </div>
-
-            <h3 className="sales-subtitle">Items en la Factura</h3>
-            <table className="sales-table">
-                <thead>
-                    <tr>
-                        <th>N° Línea</th> {}
-                        <th>ID Producto</th>
-                        <th>Descripción</th>
-                        <th>Cantidad</th>
-                        <th>Precio</th>
-                        <th>Importe</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {nuevaFactura.items.map((item, index) => (
-                        <tr key={index}>
-                            <td>{item.num_linea}</td> {}
-                            <td>{item.id_producto}</td>
-                            <td>{item.descripcion}</td>
-                            <td>{item.cantidad}</td>
-                            <td>${item.precio.toFixed(2)}</td>
-                            <td>${item.importe.toFixed(2)}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-
-            {/* <h2>Total de la Factura: ${nuevaFactura.total.toFixed(2)}</h2> */}
-            <h2>Total de la Factura: ${nuevaFactura.precio_total.toFixed(2)}</h2>
-
-
-            <button className="action-buttonT" onClick={handleAgregarFactura}>Generar Factura</button>
-            <button className="action-buttonT" onClick={handleCancelarFactura}>Cancelar Factura</button>
+          </div>
+      
+          <h3 className="sales-subtitle">Items en la Factura</h3>
+          <table className="sales-table">
+            <thead>
+              <tr>
+                <th>N° Línea</th>
+                <th>ID Producto</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Importe</th>
+              </tr>
+            </thead>
+            <tbody>
+              {nuevaFactura.items.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.num_linea}</td>
+                  <td>{item.id_producto}</td>
+                  <td>{item.descripcion}</td>
+                  <td>{item.cantidad}</td>
+                  <td>${item.precio.toFixed(2)}</td>
+                  <td>${item.importe.toFixed(2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+      
+          <h2>Total de la Factura: ${nuevaFactura.precio_total.toFixed(2)}</h2>
+      
+          <div className="cliente-modal-buttons">
+            <button className="cliente-modal-save" onClick={handleAgregarFactura}>
+              Generar Factura
+            </button>
+            <button className="cliente-modal-cancel" onClick={handleCancelarFactura}>
+              Cancelar Factura
+            </button>
+          </div>
         </div>
-    );
-
-    /*return (
-        <div className="sales-table-container">
-            <h1 className="sales-title">Generar Factura</h1>
-            <h2>Factura #{nuevaFactura.id_factura}</h2>
-            <h3>Fecha: {nuevaFactura.fecha}</h3>
-
-            <h2 className="sales-subtitle">Agregar Producto</h2>
-            <div className="form-container">
-                <label>ID Producto:</label>
-                <select value={nuevoItem.id_producto} onChange={handleProductoChange}>
-                    <option value="">Seleccione un Producto</option>
-                    {productos.map(producto => (
-                        <option key={producto.id_producto} value={producto.id_producto}>{producto.id_producto}</option>
-                    ))}
-                </select>
-                <label>Precio:</label>
-                <input type="text" value={nuevoItem.precio} disabled />
-                <label>Cantidad:</label>
-                <input
-                    type="number"
-                    value={nuevoItem.cantidad}
-                    onChange={(e) => {
-                        const cantidad = parseInt(e.target.value) || 1;
-                        setNuevoItem(prev => ({
-                            ...prev,
-                            cantidad,
-                            importe: prev.precio * cantidad,
-                        }));
-                    }}
-                />
-                <button className="action-buttonT" onClick={handleAgregarItem}>Agregar Item</button>
-            </div>
-
-            <h3 className="sales-subtitle">Items en la Factura</h3>
-            <table className="sales-table">
-                <thead>
-                    <tr>
-                        <th>N° Línea</th>
-                        <th>ID Producto</th>
-                        <th>Cantidad</th>
-                        <th>Precio</th>
-                        <th>Importe</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {nuevaFactura.items.map((item, index) => (
-                        <tr key={index}>
-                            <td>{item.num_linea}</td>
-                            <td>{item.id_producto}</td>
-                            <td>{item.cantidad}</td>
-                            <td>${item.precio.toFixed(2)}</td>
-                            <td>${item.importe.toFixed(2)}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-
-            <h2>Total de la Factura: ${nuevaFactura.total.toFixed(2)}</h2>
-
-            <button className="action-buttonT" onClick={handleAgregarFactura}>Generar Factura</button>
-            <button className="action-buttonT" onClick={handleCancelarFactura}>Cancelar Factura</button>
-        </div>
-    );*/
-
+      );
+      
 };
-
-// console.log("Facturas obtenidas:", facturas);
 
 export default Facturacion;
