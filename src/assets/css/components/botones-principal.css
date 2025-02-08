@@ -19,16 +19,16 @@
     justify-content: center;
     border: none;
     border-radius: 10px;
-    background-color: #6e5223;
+    background-color: #0e4541;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
   
   .action-button:hover {
-    background-color: #6e5223;
+    background: linear-gradient(to left, #f88f05, #0e4541);
     transform: scale(1.05);
-    color:#f88f05
+    color:white
   }
   
   .button-icon {

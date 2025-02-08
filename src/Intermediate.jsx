@@ -4,6 +4,10 @@ import "./assets/css/components/pruebas.style.css";
 import UserList from "./views/UserList";
 import ClienteList from './views/ClienteList';
 import ActionsView from './views/principal';
+import ProveedorList from './views/ProveedorList';
+import EmpleadoList from './views/EmpleadoList';
+import Facturacion from './views/facturacion';
+
 
 
 const Intermediate = () => {
@@ -13,9 +17,12 @@ const Intermediate = () => {
 
         {/* Definimos las rutas dentro de <Routes> */}
         <Routes>
-          <Route path="/" element={<UserList />} />
+          <Route path="/" element={<ActionsView />} />
+          <Route path="/userList" element={<UserList />} />
           <Route path="/cliente" element={<ClienteList />} />
-          <Route path="/principal" element={<ActionsView />} />
+          <Route path="/proveedores" element={<ProveedorList />} />
+          <Route path="/empleados" element={<EmpleadoList />} />
+          <Route path="/facturacion" element={<Facturacion />} />
         </Routes>
 
       </div>

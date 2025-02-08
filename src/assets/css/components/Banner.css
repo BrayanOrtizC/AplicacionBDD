@@ -1,0 +1,33 @@
+.banner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    background: linear-gradient(to right, #f88f05, #0e4541);
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    margin-bottom: 100px;
+    padding: 20px; /* Añadido para evitar que el texto toque los bordes */
+  }
+  
+  .banner-content {
+    max-width: 100%; /* Permite que el contenedor se ajuste al ancho disponible */
+    text-align: center; /* Centra el contenido */
+    padding: 0 20px; /* Añade espacio dentro del contenedor */
+  }
+  
+  .banner-title {
+    font-size: 5rem; /* Aumenta el tamaño de la fuente */
+    font-weight: 700; /* Asegura que el texto sea bien grueso */
+    text-transform: uppercase; /* Convierte el texto a mayúsculas */
+    margin-bottom: 20px;
+    letter-spacing: 2px; /* Aumenta el espacio entre letras */
+    color: #fff; /* El color blanco resalta sobre fondos oscuros */
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.7); /* Sombra más pronunciada */
+    font-family: 'Roboto', 'Inter', sans-serif; /* Fuente moderna y limpia */
+    word-wrap: break-word; /* Permite que el texto se divida si es demasiado largo */
+  }
+  
